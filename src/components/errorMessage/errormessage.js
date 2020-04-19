@@ -1,7 +1,15 @@
 import React from "react";
+import "./errorMessage.css";
+import img from "./error.jpg";
 
 const ErrorMessage = () => {
-  return <span>Something Went Wrong...</span>;
+  return (
+    <>
+      {/* <img src={process.env.PUBLIC_URL + "/img/error.jpg"} alt="error" /> */}
+      <img src={img} alt="error" />
+      <span>Something Went Wrong...</span>
+    </>
+  );
 };
 
 export default ErrorMessage;
