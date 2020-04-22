@@ -5,11 +5,16 @@ import RandomChar from "../randomChar";
 import CharacterPage from "../characterPage";
 import styled from "styled-components";
 import ErrorMessage from "../errorMessage";
+import ItemList from "../itemList";
+import CharDetails from "../charDetails";
+import GotService from "../../services/gotService";
 
 export default class App extends Component {
+  gotService = new GotService();
   state = {
     showRandomChar: true,
     error: false,
+    selectedItem: null,
   };
 
   componentDidCatch() {
@@ -27,7 +32,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { error, showRandomChar } = this.state;
+    const { error, showRandomChar, selectedItem } = this.state;
 
     const Button = styled.button`
       margin-bottom: 40px;
@@ -55,6 +60,28 @@ export default class App extends Component {
             Toggle Random Character
           </Button>
           <CharacterPage />
+          <Row>
+            <Col md="6">
+              <ItemList
+                onCharSelected={this.onCharSelected}
+                getData={this.gotService.getAllBooks}
+              />
+            </Col>
+            <Col md="6">
+              <CharDetails charId={selectedItem} />
+            </Col>
+          </Row>
+          <Row>
+            <Col md="6">
+              <ItemList
+                onCharSelected={this.onCharSelected}
+                getData={this.gotService.getAllHouses}
+              />
+            </Col>
+            <Col md="6">
+              <CharDetails charId={selectedItem} />
+            </Col>
+          </Row>
         </Container>
       </>
     );
