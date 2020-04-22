@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import ItemList from "../itemList";
 import CharDetails from "../charDetails";
 import ErrorMessage from "../errorMessage";
 export default class CharacterPage extends Component {
   state = {
-    selectedChar: 130,
+    selectedChar: null,
     error: false,
   };
 

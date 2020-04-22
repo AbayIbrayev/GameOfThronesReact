@@ -2,37 +2,65 @@ import React, { Component } from "react";
 import "./itemList.css";
 import GotService from "../../services/gotService";
 import Spinner from "../spinner";
+import ErrorMessage from "../errorMessage";
 export default class ItemList extends Component {
   gotService = new GotService();
 
   state = {
     charList: null,
+    error: false,
   };
 
   componentDidMount() {
-    this.gotService.getAllCharacters().then((charList) => {
-      this.setState({
-        charList,
+    this.gotService
+      .getAllCharacters()
+      .then((charList) => {
+        this.setState({
+          charList,
+          // error: false,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.onError();
       });
+  }
+
+  componentDidCatch() {
+    this.setState({
+      error: true,
+      charList: null,
+    });
+  }
+
+  onError(status) {
+    this.setState({
+      charList: null,
+      error: true,
     });
   }
 
   renderItems(arr) {
-    return arr.map((item, i) => {
+    return arr.map((item) => {
+      const { id, name } = item;
       return (
         <li
-          key={i}
+          key={id}
           className="list-group-item"
-          onClick={() => this.props.onCharSelected(i)}
+          onClick={() => this.props.onCharSelected(id)}
         >
-          {item.name}
+          {name}
         </li>
       );
     });
   }
 
   render() {
-    const { charList } = this.state;
+    const { charList, error } = this.state;
+
+    if (error) {
+      return <ErrorMessage />;
+    }
 
     if (!charList) {
       return <Spinner />;
