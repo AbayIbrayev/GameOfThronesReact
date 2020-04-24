@@ -53,7 +53,7 @@ export default class CharDetails extends Component {
     if (!char && error) {
       return <ErrorMessage />;
     } else if (!char) {
-      return <span className="select-error">Please select a character</span>;
+      return <span className="select-error">Please select an item</span>;
     }
 
     const { name, gender, born, died, culture } = char;
