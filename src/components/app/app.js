@@ -6,7 +6,7 @@ import CharacterPage from "../characterPage";
 import styled from "styled-components";
 import ErrorMessage from "../errorMessage";
 import ItemList from "../itemList";
-import CharDetails from "../charDetails";
+import ItemDetails from "../itemDetails";
 import GotService from "../../services/gotService";
 
 export default class App extends Component {
@@ -69,7 +69,7 @@ export default class App extends Component {
               />
             </Col>
             <Col md="6">
-              <CharDetails charId={selectedItem} />
+              <ItemDetails itemId={selectedItem} />
             </Col>
           </Row>
           <Row>
@@ -81,7 +81,7 @@ export default class App extends Component {
               />
             </Col>
             <Col md="6">
-              <CharDetails charId={selectedItem} />
+              <ItemDetails itemId={selectedItem} />
             </Col>
           </Row>
         </Container>
