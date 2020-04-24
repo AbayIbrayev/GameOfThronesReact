@@ -24,31 +24,28 @@ export default class CharDetails extends Component {
   };
 
   componentDidMount() {
-    this.updateChar();
+    this.updateItem();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.itemId !== prevProps.itemId) {
-      this.updateChar();
+      this.updateItem();
     }
   }
 
-  onCharLoaded = (item) => {
+  onItemLoaded = (item) => {
     this.setState({ item, loading: false });
   };
 
-  updateChar() {
-    const { itemId } = this.props;
+  updateItem() {
+    const { itemId, getData } = this.props;
     if (!itemId) {
       return;
     }
 
     this.setState({ loading: true });
 
-    this.gotService
-      .getCharacter(itemId)
-      .then(this.onCharLoaded)
-      .catch(() => this.onError());
+    getData(itemId).then(this.onItemLoaded);
   }
 
   onError() {

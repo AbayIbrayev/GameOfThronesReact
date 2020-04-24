@@ -40,7 +40,7 @@ export default class CharacterPage extends Component {
     );
 
     const charDetails = (
-      <ItemDetails itemId={selectedChar}>
+      <ItemDetails itemId={selectedChar} getData={this.gotService.getCharacter}>
         <Field field="gender" label="Gender" />
         <Field field="born" label="Born" />
         <Field field="died" label="Died" />

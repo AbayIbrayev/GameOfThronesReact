@@ -5,8 +5,6 @@ import RandomChar from "../randomChar";
 import { CharacterPage, BooksPage, HousesPage } from "../pages";
 import styled from "styled-components";
 import ErrorMessage from "../errorMessage";
-import ItemList from "../itemList";
-import ItemDetails from "../itemDetails";
 import GotService from "../../services/gotService";
 
 export default class App extends Component {
