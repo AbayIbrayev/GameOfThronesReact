@@ -49,53 +49,45 @@ export default class CharDetails extends Component {
   }
 
   render() {
-    const { char, loading, error } = this.state;
-    const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? <View char={char} /> : null;
-
+    const { char, error, loading } = this.state;
     if (!char && error) {
       return <ErrorMessage />;
     } else if (!char) {
+      return <span className="select-error">Please select a character</span>;
+    }
+
+    const { name, gender, born, died, culture } = char;
+
+    if (loading) {
       return (
-        <div className="text-center">
-          <span className="select-error">Please select a character</span>
+        <div className="char-details rounded">
+          <Spinner />
         </div>
       );
     }
 
     return (
       <div className="char-details rounded">
-        {spinner}
-        {content}
+        <h4>{name}</h4>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item d-flex justify-content-between">
+            <span className="term">Gender</span>
+            <span>{gender}</span>
+          </li>
+          <li className="list-group-item d-flex justify-content-between">
+            <span className="term">Born</span>
+            <span>{born}</span>
+          </li>
+          <li className="list-group-item d-flex justify-content-between">
+            <span className="term">Died</span>
+            <span>{died}</span>
+          </li>
+          <li className="list-group-item d-flex justify-content-between">
+            <span className="term">Culture</span>
+            <span>{culture}</span>
+          </li>
+        </ul>
       </div>
     );
   }
 }
-
-const View = ({ char }) => {
-  const { name, gender, born, died, culture } = char;
-
-  return (
-    <>
-      <h4>{name}</h4>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item d-flex justify-content-between">
-          <span className="term">Gender</span>
-          <span>{gender}</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between">
-          <span className="term">Born</span>
-          <span>{born}</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between">
-          <span className="term">Died</span>
-          <span>{died}</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between">
-          <span className="term">Culture</span>
-          <span>{culture}</span>
-        </li>
-      </ul>
-    </>
-  );
-};
