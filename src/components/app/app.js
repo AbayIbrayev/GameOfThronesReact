@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "reactstrap";
 import Header from "../header";
 import RandomChar from "../randomChar";
-import CharacterPage from "../characterPage";
+import { CharacterPage, BooksPage, HousesPage } from "../pages";
 import styled from "styled-components";
 import ErrorMessage from "../errorMessage";
 import ItemList from "../itemList";
@@ -60,30 +60,8 @@ export default class App extends Component {
             Toggle Random Character
           </Button>
           <CharacterPage />
-          <Row>
-            <Col md="6">
-              <ItemList
-                onCharSelected={this.onCharSelected}
-                getData={this.gotService.getAllBooks}
-                renderItem={(item) => item.name}
-              />
-            </Col>
-            <Col md="6">
-              <ItemDetails itemId={selectedItem} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md="6">
-              <ItemList
-                onCharSelected={this.onCharSelected}
-                getData={this.gotService.getAllHouses}
-                renderItem={(item) => item.name}
-              />
-            </Col>
-            <Col md="6">
-              <ItemDetails itemId={selectedItem} />
-            </Col>
-          </Row>
+          <BooksPage />
+          <HousesPage />
         </Container>
       </>
     );
