@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const HeaderBlock = styled.div`
   display: flex;
@@ -31,20 +32,20 @@ const Header = () => {
     <HeaderBlock>
       <HeaderTitle>
         {/* eslint-disable-next-line */}
-        <a href="#">Game of Thrones DB</a>
+        <Link to="/">Game of Thrones DB</Link>
       </HeaderTitle>
       <HeaderLinks>
         <li>
           {/* eslint-disable-next-line */}
-          <a href="#">Characters</a>
+          <Link to="/characters">Characters</Link>
         </li>
         <li>
           {/* eslint-disable-next-line */}
-          <a href="#">Houses</a>
+          <Link to="/houses">Houses</Link>
         </li>
         <li>
           {/* eslint-disable-next-line */}
-          <a href="#">Books</a>
+          <Link to="/books">Books</Link>
         </li>
       </HeaderLinks>
     </HeaderBlock>
