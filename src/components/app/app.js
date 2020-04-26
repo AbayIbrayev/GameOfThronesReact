@@ -32,7 +32,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { error, showRandomChar, selectedItem } = this.state;
+    const { error, showRandomChar } = this.state;
 
     const Button = styled.button`
       margin-bottom: 40px;
