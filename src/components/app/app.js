@@ -68,9 +68,9 @@ export default class App extends Component {
               exact
               component={() => <H1>Welcome to the GoT DB!</H1>}
             />
-            <Route path="/characters" component={CharacterPage} />
-            <Route path="/houses" component={HousesPage} />
-            <Route path="/books" exact component={BooksPage} />
+            <Route path="/characters/" component={CharacterPage} />
+            <Route path="/houses/" component={HousesPage} />
+            <Route path="/books/" exact component={BooksPage} />
             <Route
               path="/books/:id"
               render={({ match }) => {
