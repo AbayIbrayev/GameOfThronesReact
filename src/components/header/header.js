@@ -37,15 +37,15 @@ const Header = () => {
       <HeaderLinks>
         <li>
           {/* eslint-disable-next-line */}
-          <Link to="/characters">Characters</Link>
+          <Link to="/characters/">Characters</Link>
         </li>
         <li>
           {/* eslint-disable-next-line */}
-          <Link to="/houses">Houses</Link>
+          <Link to="/houses/">Houses</Link>
         </li>
         <li>
           {/* eslint-disable-next-line */}
-          <Link to="/books">Books</Link>
+          <Link to="/books/">Books</Link>
         </li>
       </HeaderLinks>
     </HeaderBlock>

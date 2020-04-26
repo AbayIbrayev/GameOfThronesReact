@@ -15,7 +15,7 @@ export default class RandomChar extends Component {
   };
 
   static defaultProps = {
-    interval: 10000,
+    interval: 5000,
   };
 
   componentDidMount() {

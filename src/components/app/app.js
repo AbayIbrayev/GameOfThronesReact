@@ -59,20 +59,20 @@ export default class App extends Component {
             <Header />
           </Container>
           <Container>
-            <Route
-              path="/"
-              exact
-              component={() => <H1>Welcome to the GoT DB!</H1>}
-            />
             <Row>
               <Col lg={{ size: 5, offset: 0 }}>{char}</Col>
             </Row>
             <Button onClick={this.toggleRandomChar}>
               Toggle Random Character
             </Button>
-            <Route path="/characters/" component={CharacterPage} />
-            <Route path="/houses/" component={HousesPage} />
-            <Route path="/books/" exact component={BooksPage} />
+            <Route
+              path="/"
+              exact
+              component={() => <H1>Welcome to the GoT DB!</H1>}
+            />
+            <Route path="/characters" component={CharacterPage} />
+            <Route path="/houses" component={HousesPage} />
+            <Route path="/books" exact component={BooksPage} />
             <Route
               path="/books/:id"
               render={({ match }) => {
