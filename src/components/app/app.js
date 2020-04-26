@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "reactstrap";
 import Header from "../header";
 import RandomChar from "../randomChar";
-import { CharacterPage, BooksPage, HousesPage } from "../pages";
+import { CharacterPage, BooksPage, HousesPage, BooksItem } from "../pages";
 import styled from "styled-components";
 import ErrorMessage from "../errorMessage";
 import GotService from "../../services/gotService";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./app.css";
 
 export default class App extends Component {
   gotService = new GotService();
@@ -39,6 +40,9 @@ export default class App extends Component {
       background-color: #ffffff;
       border-radius: 0.25rem !important;
     `;
+    const H1 = styled.h1`
+      color: #ffffff;
+    `;
 
     if (error) {
       return <ErrorMessage />;
@@ -59,9 +63,21 @@ export default class App extends Component {
             <Button onClick={this.toggleRandomChar}>
               Toggle Random Character
             </Button>
+            <Route
+              path="/"
+              exact
+              component={() => <H1>Welcome to the GoT DB!</H1>}
+            />
             <Route path="/characters" component={CharacterPage} />
-            <Route path="/books" component={BooksPage} />
             <Route path="/houses" component={HousesPage} />
+            <Route path="/books" exact component={BooksPage} />
+            <Route
+              path="/books/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                return <BooksItem bookId={id} />;
+              }}
+            />
           </Container>
         </div>
       </Router>
