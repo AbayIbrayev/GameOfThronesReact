@@ -28,7 +28,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.3.0"
-  }
+  "devDependencies": {}
 }
