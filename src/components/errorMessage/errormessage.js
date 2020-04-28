@@ -1,5 +1,4 @@
 import React from "react";
-import "./error.css";
 import img from "./error.jpg";
 
 const ErrorMessage = () => {
