@@ -5,10 +5,12 @@ import ErrorMessage from "../errorMessage";
 
 function ItemList({ getData, onItemSelected, renderItem }) {
   const [itemList, updateList] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     getData()
       .then((data) => {
+        setIsLoaded(true);
         updateList(data);
       })
       .catch((err) => {
@@ -37,13 +39,13 @@ function ItemList({ getData, onItemSelected, renderItem }) {
     });
   }
 
-  if (!itemList) {
+  if (!itemList || !isLoaded) {
     return <Spinner />;
   }
 
   const items = renderItems(itemList);
 
-  return <ul className="item-list list-group">{items}</ul>;
+  return <ul className="item-list list-group">{isLoaded && items}</ul>;
 }
 
 export default ItemList;
